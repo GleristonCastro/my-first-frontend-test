@@ -21,13 +21,19 @@ describe('<Button>', () => {
     expect(isLoadingText).toBeInTheDocument();
   });
 
-  // it(`should render the button with background color green by default`, () => {
-  //   const { getByRole } = render(<Button isLoading>button</Button>);
+  it(`should render the button with background color green by default`, async () => {
+    const { getByRole } = render(<Button>button</Button>);
 
-  //   const buttonElement = getByRole('button');
+    const buttonElement = await getByRole('button');
 
-  //   expect(buttonElement).toHaveStyle({
-  //     backgroundcolor: 'green'
-  //   });
-  // });
+    expect(buttonElement).toHaveStyle(`backgroundColor: 'green'`);
+  });
+
+  it(`should render the button with background color red when color was passed`, () => {
+    const { getByRole } = render(<Button color="red">button</Button>);
+
+    const buttonElement = getByRole('button');
+
+    expect(buttonElement).toHaveStyle(`backgroundColor: 'red'`);
+  });
 });
